@@ -4,3 +4,5 @@ features/
 tmp/
 vendor/
 log/
+db/*.sqlite3
+.bundle/
