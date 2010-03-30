@@ -6,11 +6,11 @@ class CommitsController < ApplicationController
   def show
     @commit = current_repository.commits.find_by_sha(params[:id])
   end
-  
+
   def search
     render :action => 'index'
   end
-  
+
   protected
     def find_query
       if params[:q] && params[:tree]

@@ -15,12 +15,12 @@ require 'warehouse/node'
 require 'progressbar'
 module Warehouse
   class Syncer
-    
+
     def initialize(repo)
       @repo = repo
       @grit = repo.silo.grit_object
     end
-    
+
     def self.process(repo = nil)
       if repo
         new(repo).process
@@ -28,7 +28,7 @@ module Warehouse
         Repository.all.each { |r| r.sync_revisions }
       end
     end
-    
+
     def process
       puts @repo.name
       @heads = @grit.heads.dup.collect { |h| h.name }
@@ -75,17 +75,17 @@ module Warehouse
       end
       puts ''
     end
-    
+
     protected
       def commits_from_time_to_now_on_branch(time, branch)
         grit.log(branch, '', :since => time.utc.xmlschema)
         # repo.silo.revisions_to_sync(branch)
       end
-      
+
       def grit
         @grit
       end
-      
+
       def create_changes_from_commit(commit, commit_object)
         added_files, deleted_files, moved_files, modified_files = [], [], [], []
         commit.diffs.each do |d|
@@ -136,10 +136,10 @@ module Warehouse
           c.parent = p
           c.sha = mod.b_blob.id
           c.save
-        end        
-        
+        end
+
       end
-    
+
   end
 end
 def symbolize_keys

@@ -3,7 +3,7 @@ class Warehouse::DiffRenderer < Diff::Renderer::Base
     @counter = [0, 0]
     super
   end
-  
+
   def headerline(line)
   end
 
@@ -14,7 +14,7 @@ class Warehouse::DiffRenderer < Diff::Renderer::Base
   def remline(line)
     row :delete, line
   end
-  
+
   def addline(line)
     row :insert, line
   end

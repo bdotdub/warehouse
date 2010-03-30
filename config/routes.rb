@@ -1,7 +1,7 @@
 REPO_ROOT_REGEX = /^(\/?(admin|changesets|browser|install|login|logout|reset|forget))(\/|$)/
 
 ActionController::Routing::Routes.draw do |map|
-  
+
   map.with_options :path_prefix => '/:repo' do |repo|
     repo.with_options :controller => "commits" do |c|
       c.all_commits     "commits",            :action => "index"
@@ -22,13 +22,13 @@ ActionController::Routing::Routes.draw do |map|
       b.multi_list  "multi-list",          :action => "multi_list"
       b.repo        "*paths",         :action => "index"
     end
-    
+
   end
-  
+
   # map.root :controller => "dashboard"
-  
+
   # map.repo '/:repo', :controller => 'browser', :action => 'index'
-  
+
   #   repo.with_options :controller => "browser" do |b|
   #     b.rev_browser "browser/:rev/*paths", :rev => /r\w+/
   #     b.browser     "browser/*paths"
@@ -39,6 +39,6 @@ ActionController::Routing::Routes.draw do |map|
   # end
   # map.connect ':controller/:action/:id'
   # map.connect ':controller/:action/:id.:format'
-  
+
   map.root :controller => "application"
 end

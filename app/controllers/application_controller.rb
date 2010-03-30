@@ -10,17 +10,17 @@ class ApplicationController < ActionController::Base
   # filter_parameter_logging :password
   # expiring_attr_reader :current_repository, :retrieve_current_repository
   # expiring_attr_reader :current_commit, :retrieve_latest_revision
-  
+
   protected
-  
+
     def current_repository
       @repo = Repository.find_by_slug(repository_name)
     end
-    
+
     def repository_name
       @repository_name ||= params.delete(:repo)
     end
-    
+
     def current_commit
       @latest_commit ||= @revision ? current_repository.commits.find_by_tree(@revision) : current_repository.commits.first
     end
