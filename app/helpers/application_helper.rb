@@ -67,7 +67,7 @@ module ApplicationHelper
 
   ## SRC CODE
   def highlight_source_for_node(node)
-    highlight(node.data, node.mime_type)
+    highlight(node.mime_type, node.data)
   end
 
   ### USERS
