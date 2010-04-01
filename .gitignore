@@ -2,7 +2,7 @@
 doc/
 features/
 tmp/
-vendor/
+vendor/gems
 log/
 db/*.sqlite3
 .bundle/
