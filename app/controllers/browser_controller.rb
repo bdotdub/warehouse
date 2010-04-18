@@ -1,6 +1,6 @@
 class BrowserController < ApplicationController
   include Warehouse::RepositoryResources
-  before_filter :find_node, :except => [:multi, :tag, :multi_list]
+  before_filter :find_node, :except => [:multi, :tag, :multi_list, :search]
   before_filter :render_sync_required_unless_current_commit, :only => [:index, :blame]
 
   def index
@@ -31,7 +31,11 @@ class BrowserController < ApplicationController
   def multi_list
     render :action => 'multi_list', :layout => false
   end
-
+  
+  def search
+    
+  end
+  
   def history
     @changes = Change.paginate(:page => params[:page], :per_page => 15, :conditions => { :path =>  (params[:paths] * '/'), :commit_id => current_repository.commits.all(:conditions => { :branch => current_commit.branch }) })
   end
